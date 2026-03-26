@@ -2,284 +2,546 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Minecraft Style Login</title>
+<title>Minecraft Help Center</title>
 
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: url('minecraft-bg.jpg') center/cover no-repeat fixed;
-    color: #fff;
-  }
-
-  .overlay {
-    background: rgba(0,0,0,0.55);
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+  * {
     box-sizing: border-box;
   }
 
-  .container, .admin-box {
-    display: flex;
-    gap: 40px;
-    background: rgba(20,20,20,0.85);
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.6);
-    max-width: 900px;
-    width: 100%;
-    transition: 0.3s ease;
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0c10;
+    color: #111;
   }
 
-  .admin-box {
-    display: none;
-    flex-direction: column;
-    text-align: center;
-    max-width: 400px;
-  }
-
-  .left {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .left h1 {
-    margin: 0 0 10px 0;
-    font-size: 28px;
-    font-weight: bold;
-  }
-
-  .btn {
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-
-  .ms-btn {
-    background: #2d7df4;
-    color: white;
-  }
-
-  .ms-btn:hover {
-    background: #1f5ec0;
-  }
-
-  .signup-btn {
-    background: #3b3b3b;
-    color: white;
-  }
-
-  .signup-btn:hover {
-    background: #2a2a2a;
-  }
-
-  .right {
-    flex: 1;
-    background: rgba(0,0,0,0.3);
-    padding: 20px;
-    border-radius: 8px;
-  }
-
-  .right h2 {
-    margin-top: 0;
-    font-size: 22px;
-  }
-
-  .checklist {
-    margin-top: 15px;
-    line-height: 1.7;
-  }
-
-  .checklist span {
-    color: #7CFC00;
-    font-weight: bold;
-  }
-
-  .small-link {
-    margin-top: 15px;
-    font-size: 14px;
-    opacity: 0.8;
-  }
-
-  .small-link a {
-    color: #7CFC00;
+  a {
+    color: #1f7cff;
     text-decoration: none;
-    cursor: pointer;
   }
 
-  /* ADMIN LOGIN */
-  .admin-box input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 6px;
-    border: none;
-    margin-bottom: 15px;
-    font-size: 16px;
+  a:hover {
+    text-decoration: underline;
   }
 
-  .admin-btn {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    background: #2d7df4;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    color: #fff;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-box {
+    width: 40px;
+    height: 40px;
+    background: #000;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .header-title {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-title span:first-child {
+    font-size: 18px;
     font-weight: bold;
   }
 
-  .admin-btn:hover {
-    background: #1f5ec0;
+  .header-title span:last-child {
+    font-size: 13px;
+    opacity: 0.9;
   }
 
-  /* SUPPORT BUTTON */
-  .support-btn {
+  .header-right a {
+    font-size: 14px;
+    color: #e0f7fa;
+    margin-left: 16px;
+  }
+
+  /* HERO / SEARCH */
+  .hero {
+    background: url('minecraft-bg.jpg') center/cover no-repeat;
+    padding: 60px 40px;
+    color: #fff;
+    position: relative;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+  }
+
+  .hero-inner {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hero h1 {
+    margin: 0 0 10px 0;
+    font-size: 32px;
+  }
+
+  .hero p {
+    margin: 0 0 20px 0;
+    opacity: 0.9;
+  }
+
+  .search-box {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .search-box input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 15px;
+  }
+
+  .search-box button {
+    padding: 12px 18px;
+    border-radius: 6px;
+    border: none;
+    background: #1f7cff;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .search-box button:hover {
+    background: #155ac0;
+  }
+
+  /* MAIN LAYOUT */
+  .main {
+    max-width: 1100px;
+    margin: 30px auto 60px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+  }
+
+  /* LEFT COLUMN – CATEGORIES & ARTICLES */
+  .section-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+
+  .category-card {
+    background: #f5f5f5;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+
+  .category-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+
+  .category-title {
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  .category-desc {
+    font-size: 13px;
+    color: #555;
+  }
+
+  .article-list {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 18px 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.06);
+  }
+
+  .article-list h2 {
+    margin-top: 0;
+    font-size: 18px;
+  }
+
+  .article-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+  }
+
+  .article-list li {
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  /* RIGHT COLUMN – SIDEBAR */
+  .sidebar-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 18px 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.06);
+    margin-bottom: 20px;
+  }
+
+  .sidebar-card h3 {
+    margin-top: 0;
+    font-size: 16px;
+  }
+
+  .sidebar-card p {
+    font-size: 14px;
+    color: #444;
+  }
+
+  .sidebar-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0 0;
+  }
+
+  .sidebar-card li {
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid #ddd;
+    padding: 16px 40px;
+    font-size: 13px;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .footer a {
+    color: #666;
+  }
+
+  /* SUPPORT WIDGET */
+  .support-wrapper {
     position: fixed;
-    bottom: 25px;
-    right: 25px;
+    bottom: 24px;
+    right: 24px;
     z-index: 9999;
     font-family: Arial, sans-serif;
   }
 
-  .support-box {
+  .support-bar {
     position: relative;
-    width: 230px;
-    height: 60px;
-    border-radius: 10px;
+    width: 260px;
+    height: 64px;
+    border-radius: 12px;
     overflow: hidden;
-    display: flex;
+    display: none;
     align-items: center;
     margin-bottom: 10px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+    background: #1e1e1e;
   }
 
-  .support-bg {
+  .support-bar-bg {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.55);
+    inset: 0;
+    background: url('minecraft-bg.jpg') center/cover no-repeat;
+    filter: blur(3px) brightness(0.4);
+    transform: scale(1.1);
   }
 
-  .support-content {
+  .support-bar-content {
     position: relative;
     display: flex;
     align-items: center;
     gap: 10px;
-    padding-left: 10px;
-    color: white;
-    font-weight: bold;
+    padding-left: 12px;
+    padding-right: 8px;
+    color: #fff;
     z-index: 2;
+    width: 100%;
   }
 
-  .avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 4px;
+  .support-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    background: #ff80ab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
   }
 
-  .close-btn {
+  .support-text-main {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .support-text-sub {
+    font-size: 12px;
+    opacity: 0.85;
+  }
+
+  .support-close {
     margin-left: auto;
-    margin-right: 8px;
     background: transparent;
     border: none;
-    color: white;
-    font-size: 20px;
+    color: #fff;
+    font-size: 18px;
     cursor: pointer;
   }
 
-  .floating-btn {
-    width: 55px;
-    height: 55px;
+  .support-button {
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     border: none;
-    background: #3bbf3b;
-    color: white;
-    font-size: 22px;
+    background: #2ecc71;
+    color: #fff;
+    font-size: 24px;
     cursor: pointer;
-    box-shadow: 0 0 12px rgba(0,0,0,0.4);
-    transition: 0.2s;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
   }
 
-  .floating-btn:hover {
-    background: #2e9e2e;
+  .support-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.5);
+    background: #27ae60;
+  }
+
+  .support-bar.show {
+    display: flex;
+    animation: slideUp 0.22s ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 800px) {
+    .main {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 </head>
-
 <body>
 
-<div class="overlay">
-
-  <!-- MAIN LOGIN PAGE -->
-  <div class="container" id="mainPage">
-
-    <div class="left">
-      <h1>Welcome</h1>
-
-      <button class="btn ms-btn">SIGN IN WITH Microsoft</button>
-      <button class="btn signup-btn">SIGN UP</button>
-
-      <div class="small-link">
-        Trying to sign in with your old account?  
-        <a id="adminLink">Click here</a>
-      </div>
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <div class="logo-box">M</div>
+    <div class="header-title">
+      <span>Minecraft Help Center</span>
+      <span>Support, guides, and troubleshooting</span>
     </div>
-
-    <div class="right">
-      <h2>Manage your Minecraft experience</h2>
-
-      <div class="checklist">
-        <span>✓</span> Buy games and Realms<br>
-        <span>✓</span> Customize your profile<br>
-        <span>✓</span> Manage Java & Bedrock Realms<br>
-        <span>✓</span> Invite and play with friends
-      </div>
-    </div>
-
   </div>
-
-  <!-- ADMIN LOGIN PAGE -->
-  <div class="admin-box" id="adminPage">
-    <h1>Admin Login</h1>
-
-    <input type="text" placeholder="nigger">
-    <input type="password" placeholder="nigger">
-
-    <button class="admin-btn">Login</button>
+  <div class="header-right">
+    <a href="#">Games</a>
+    <a href="#">Store</a>
+    <a href="#">Community</a>
+    <a href="#">Sign in</a>
   </div>
-
 </div>
 
-<!-- SUPPORT BUTTON -->
-<div class="support-btn">
-  <div class="support-box">
-    <img src="minecraft-art.jpg" class="support-bg">
-    <div class="support-content">
-      <img src="support-avatar.png" class="avatar">
-      <span>Need Support?</span>
-      <button class="close-btn">×</button>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <h1>How can we help?</h1>
+    <p>Search for answers about accounts, Realms, multiplayer, billing, and more.</p>
+    <div class="search-box">
+      <input type="text" placeholder="Search support articles...">
+      <button>Search</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+  <!-- LEFT COLUMN -->
+  <div>
+    <div class="section-title">Browse by category</div>
+    <div class="categories">
+      <div class="category-card">
+        <div class="category-title">Account & Security</div>
+        <div class="category-desc">Login issues, security codes, migration, and profile settings.</div>
+      </div>
+      <div class="category-card">
+        <div class="category-title">Realms & Multiplayer</div>
+        <div class="category-desc">Realms setup, invites, cross‑play, and connection problems.</div>
+      </div>
+      <div class="category-card">
+        <div class="category-title">Marketplace & Billing</div>
+        <div class="category-desc">Purchases, refunds, coins, and subscription questions.</div>
+      </div>
+      <div class="category-card">
+        <div class="category-title">Technical Support</div>
+        <div class="category-desc">Crashes, performance, and platform‑specific troubleshooting.</div>
+      </div>
+    </div>
+
+    <div class="article-list">
+      <h2>Popular articles</h2>
+      <ul>
+        <li><a href="#">Recovering access to your Minecraft account</a></li>
+        <li><a href="#">Troubleshooting Realms connection issues</a></li>
+        <li><a href="#">What to do if your world won’t load</a></li>
+        <li><a href="#">Understanding Java & Bedrock cross‑play</a></li>
+        <li><a href="#">How to manage your subscription and billing</a></li>
+      </ul>
     </div>
   </div>
 
-  <button class="floating-btn">💬✨</button>
+  <!-- RIGHT COLUMN -->
+  <div>
+    <div class="sidebar-card">
+      <h3>Need help with something specific?</h3>
+      <p>Try searching for the exact error message or topic you’re seeing in game.</p>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Quick links</h3>
+      <ul>
+        <li><a href="#">Report a bug</a></li>
+        <li><a href="#">View server status</a></li>
+        <li><a href="#">Parental controls & safety</a></li>
+        <li><a href="#">Community guidelines</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Admin access</h3>
+      <p>Admins can sign in to manage Realms, players, and security settings.</p>
+      <button style="margin-top:8px;padding:10px 14px;border-radius:6px;border:none;background:#1f7cff;color:#fff;font-weight:bold;cursor:pointer;"
+              onclick="openAdminLogin()">
+        Admin sign‑in
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>© 2026 Your Minecraft‑Inspired Project</div>
+  <div>
+    <a href="#">Privacy</a> ·
+    <a href="#">Terms</a> ·
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<!-- SUPPORT WIDGET -->
+<div class="support-wrapper">
+  <div class="support-bar" id="supportBar">
+    <div class="support-bar-bg"></div>
+    <div class="support-bar-content">
+      <div class="support-avatar">?</div>
+      <div>
+        <div class="support-text-main">Need support?</div>
+        <div class="support-text-sub">We’ll help you find the right article.</div>
+      </div>
+      <button class="support-close" id="supportClose">×</button>
+    </div>
+  </div>
+
+  <button class="support-button" id="supportButton">💬</button>
+</div>
+
+<!-- ADMIN LOGIN MODAL -->
+<div id="adminModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9998;align-items:center;justify-content:center;">
+  <div style="background:#1f1f1f;color:#fff;padding:24px 26px;border-radius:10px;width:320px;box-shadow:0 0 20px rgba(0,0,0,0.6);">
+    <h3 style="margin-top:0;margin-bottom:14px;">Admin Login</h3>
+    <input type="text" placeholder="Username" id="adminUser"
+           style="width:100%;padding:10px;border-radius:6px;border:none;margin-bottom:10px;">
+    <input type="password" placeholder="Security code" id="adminPassword"
+           style="width:100%;padding:10px;border-radius:6px;border:none;margin-bottom:14px;">
+    <button onclick="adminLogin()"
+            style="width:100%;padding:10px;border:none;border-radius:6px;background:#1f7cff;color:#fff;font-weight:bold;cursor:pointer;margin-bottom:8px;">
+      Sign in
+    </button>
+    <button onclick="closeAdminLogin()"
+            style="width:100%;padding:10px;border:none;border-radius:6px;background:#444;color:#fff;cursor:pointer;">
+      Return
+    </button>
+  </div>
 </div>
 
 <script>
-  document.getElementById("adminLink").onclick = function() {
-    document.getElementById("mainPage").style.display = "none";
-    document.getElementById("adminPage").style.display = "flex";
-  };
+  const supportButton = document.getElementById('supportButton');
+  const supportBar = document.getElementById('supportBar');
+  const supportClose = document.getElementById('supportClose');
+
+  // Support button should open admin login directly
+  supportButton.addEventListener('click', () => {
+    openAdminLogin();
+  });
+
+  // Close button on support bar (if you ever show it)
+  supportClose.addEventListener('click', () => {
+    supportBar.classList.remove('show');
+    supportButton.style.display = 'flex';
+  });
+
+  function openAdminLogin() {
+    document.getElementById('adminModal').style.display = 'flex';
+  }
+
+  function closeAdminLogin() {
+    document.getElementById('adminModal').style.display = 'none';
+  }
+
+  function adminLogin() {
+    const password = document.getElementById('adminPassword').value;
+
+    if (password === "test009") {
+      alert("Access granted");
+      // Place admin dashboard logic or redirect here if you want
+      // e.g., window.location.href = "admin-dashboard.html";
+    } else {
+      alert("Incorrect security code");
+    }
+  }
 </script>
 
 </body>
