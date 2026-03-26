@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Minecraft Style Login</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('minecraft-bg.jpg') center/cover no-repeat fixed;
+    color: #fff;
+  }
+
+  .overlay {
+    background: rgba(0,0,0,0.55);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .container, .admin-box {
+    display: flex;
+    gap: 40px;
+    background: rgba(20,20,20,0.85);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    max-width: 900px;
+    width: 100%;
+    transition: 0.3s ease;
+  }
+
+  .admin-box {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    max-width: 400px;
+  }
+
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .left h1 {
+    margin: 0 0 10px 0;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .btn {
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .ms-btn {
+    background: #2d7df4;
+    color: white;
+  }
+
+  .ms-btn:hover {
+    background: #1f5ec0;
+  }
+
+  .signup-btn {
+    background: #3b3b3b;
+    color: white;
+  }
+
+  .signup-btn:hover {
+    background: #2a2a2a;
+  }
+
+  .right {
+    flex: 1;
+    background: rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .right h2 {
+    margin-top: 0;
+    font-size: 22px;
+  }
+
+  .checklist {
+    margin-top: 15px;
+    line-height: 1.7;
+  }
+
+  .checklist span {
+    color: #7CFC00;
+    font-weight: bold;
+  }
+
+  .small-link {
+    margin-top: 15px;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  .small-link a {
+    color: #7CFC00;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* ADMIN LOGIN */
+  .admin-box input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+
+  .admin-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #2d7df4;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .admin-btn:hover {
+    background: #1f5ec0;
+  }
+
+  /* SUPPORT BUTTON */
+  .support-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+    font-family: Arial, sans-serif;
+  }
+
+  .support-box {
+    position: relative;
+    width: 230px;
+    height: 60px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  }
+
+  .support-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.55);
+  }
+
+  .support-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 10px;
+    color: white;
+    font-weight: bold;
+    z-index: 2;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+  }
+
+  .close-btn {
+    margin-left: auto;
+    margin-right: 8px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .floating-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: none;
+    background: #3bbf3b;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    transition: 0.2s;
+  }
+
+  .floating-btn:hover {
+    background: #2e9e2e;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+  <!-- MAIN LOGIN PAGE -->
+  <div class="container" id="mainPage">
+
+    <div class="left">
+      <h1>Welcome</h1>
+
+      <button class="btn ms-btn">SIGN IN WITH Microsoft</button>
+      <button class="btn signup-btn">SIGN UP</button>
+
+      <div class="small-link">
+        Trying to sign in with your old account?  
+        <a id="adminLink">Click here</a>
+      </div>
+    </div>
+
+    <div class="right">
+      <h2>Manage your Minecraft experience</h2>
+
+      <div class="checklist">
+        <span>✓</span> Buy games and Realms<br>
+        <span>✓</span> Customize your profile<br>
+        <span>✓</span> Manage Java & Bedrock Realms<br>
+        <span>✓</span> Invite and play with friends
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ADMIN LOGIN PAGE -->
+  <div class="admin-box" id="adminPage">
+    <h1>Admin Login</h1>
+
+    <input type="text" placeholder="nigger">
+    <input type="password" placeholder="nigger">
+
+    <button class="admin-btn">Login</button>
+  </div>
+
+</div>
+
+<!-- SUPPORT BUTTON -->
+<div class="support-btn">
+  <div class="support-box">
+    <img src="minecraft-art.jpg" class="support-bg">
+    <div class="support-content">
+      <img src="support-avatar.png" class="avatar">
+      <span>Need Support?</span>
+      <button class="close-btn">×</button>
+    </div>
+  </div>
+
+  <button class="floating-btn">💬✨</button>
+</div>
+
+<script>
+  document.getElementById("adminLink").onclick = function() {
+    document.getElementById("mainPage").style.display = "none";
+    document.getElementById("adminPage").style.display = "flex";
+  };
+</script>
+
+</body>
+</html>
